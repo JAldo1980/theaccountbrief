@@ -13,6 +13,10 @@ export const AUTHOR = {
   name: 'James Alderman',
   jobTitle: 'Client Services Manager',
   location: 'Birmingham, UK',
+  description:
+    'Client Services Manager with 13+ years in digital marketing, B2B growth and SEO, across start-up, in-house and agency roles.',
+  // Headshot: put a square photo at public/images/james-alderman.jpg and set this to '/images/james-alderman.jpg'.
+  photo: '',
   // Add your profile URLs here; they feed the author schema (sameAs) and the footer.
   linkedin: 'https://www.linkedin.com/in/jamespalderman/',
   email: '', // optional contact address

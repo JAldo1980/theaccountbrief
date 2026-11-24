@@ -5,6 +5,7 @@ import PostList from '../components/PostList.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import { SITE, AUTHOR, categoryBySlug } from '../consts';
 import { getPublishedPosts, formatDate, readingTime, type Post } from '../lib/posts';
+import { extractFaq } from '../lib/faq';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -17,6 +18,9 @@ const d = post.data;
 const cat = categoryBySlug(d.category);
 const url = new URL(`/${post.id}/`, Astro.site).href;
 const related = all.filter((p) => p.id !== post.id && p.data.category === d.category).slice(0, 3);
+const image = d.image ?? `/og/${post.id}.png`;
+const imageUrl = new URL(image, SITE.url).href;
+const faq = extractFaq(post.body ?? '');
 
 const schema = [
   {
@@ -35,7 +39,15 @@ const schema = [
     publisher: { '@id': `${SITE.url}/#james` },
     isPartOf: { '@id': `${SITE.url}/#website` },
     wordCount: (post.body ?? '').trim().split(/\s+/).length,
+    image: { '@type': 'ImageObject', url: imageUrl, width: 1200, height: 630 },
   },
+  ...(faq.length
+    ? [{
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }]
+    : []),
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -51,7 +63,9 @@ const schema = [
   description={d.description}
   type="article"
   schema={schema}
-  noindex={d.draft}
+  noindex={d.draft || d.noindex}
+  canonical={d.canonical}
+  image={image}
   publishedTime={d.pubDate}
   modifiedTime={d.updatedDate}
 >
@@ -68,7 +82,7 @@ const schema = [
     </div>
     <div class="narrow"><ShareButtons url={url} title={d.title} description={d.description} /></div>
     <aside class="author-box narrow" aria-label="About the author">
-      <span class="brand-mark" aria-hidden="true">JA</span>
+      {AUTHOR.photo ? <img class="author-photo" src={AUTHOR.photo} alt="" width="64" height="64" loading="lazy" /> : <span class="brand-mark" aria-hidden="true">JA</span>}
       <div>
         <strong>{AUTHOR.name}</strong>
         <p>13+ years in B2B marketing, SEO and agency account management. Writes The Account Brief on strategy and client service. <a href="/about/">More about James</a>.</p>

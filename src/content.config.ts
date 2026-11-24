@@ -17,6 +17,12 @@ const posts = defineCollection({
     tags: z.array(z.string()).default([]),
     // Drafts build locally but are never published.
     draft: z.boolean().default(false),
+    // Optional SEO controls.
+    canonical: z.string().url().optional(), // only if this post first appeared elsewhere
+    noindex: z.boolean().default(false), // keep this post out of search results
+    image: z.string().optional(), // custom share image path, e.g. /images/post.png (default: generated)
+    featured: z.boolean().default(false), // pin to the top of its category hub as "Start here"
+
   }),
 });
 

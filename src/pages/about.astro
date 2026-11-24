@@ -6,6 +6,7 @@ const schema = [{ '@type': 'ProfilePage', '@id': url, url, mainEntity: { '@id': 
 ---
 <Base title={`About ${AUTHOR.name} | ${SITE.name}`} description={`${AUTHOR.name} has 13+ years in B2B marketing, SEO and agency account management. About him and The Account Brief.`} schema={schema}>
   <header class="article-head narrow">
+    {AUTHOR.photo && <img class="about-photo" src={AUTHOR.photo} alt={AUTHOR.name} width="112" height="112" />}
     <p class="eyebrow">About</p>
     <h1>{AUTHOR.name}</h1>
     <p class="lede">I write The Account Brief: practical notes on B2B marketing strategy and client service, from the person who runs the account.</p>

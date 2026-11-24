@@ -142,3 +142,8 @@ h3 { font-size: 1.25rem; margin: 1.8rem 0 0.5rem; }
 }
 .share a:hover, .share button:hover { border-color: var(--ink); background: color-mix(in srgb, var(--hi) 22%, var(--paper)); }
 .share-status { min-height: 1.4em; margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--muted); }
+.author-photo { width: 4rem; height: 4rem; border-radius: 50%; object-fit: cover; }
+.about-photo { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+.start-here { background: color-mix(in srgb, var(--hi) 12%, var(--paper)); border: 1px solid var(--line); padding: 0.25rem 1.25rem; margin-block: 2rem 0; }
+.start-here .post-list { margin-bottom: 0.5rem; }
+.start-here .post-list li:last-child { border-bottom: 0; }
