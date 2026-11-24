@@ -46,7 +46,7 @@ const schema = [
 ];
 ---
 <Base
-  title={`${d.metaTitle ?? d.title} | ${SITE.name}`}
+  title={d.metaTitle ?? `${d.title} | ${SITE.name}`}
   description={d.description}
   type="article"
   schema={schema}
