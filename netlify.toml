@@ -23,3 +23,9 @@
 #   to = "https://theaccountbrief.uk/:splat"
 #   status = 301
 #   force = true
+
+# Common sitemap address people and tools try first.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
