@@ -1,6 +1,6 @@
 # The Account Brief
 
-B2B marketing strategy and client service, from the account side. A static [Astro](https://astro.build) blog by James Alderman, deployed on Netlify at https://jamesalderman.uk.
+B2B marketing strategy and client service, from the account side. A static [Astro](https://astro.build) blog by James Alderman, deployed on Netlify at https://theaccountbrief.uk.
 
 ## Writing a post
 

@@ -4,7 +4,7 @@ export const SITE = {
   tagline: 'B2B marketing strategy and client service, from the account side',
   description:
     'Practical writing on B2B marketing strategy, key account management and client service, from 13+ years running B2B accounts agency-side.',
-  url: 'https://jamesalderman.uk',
+  url: 'https://theaccountbrief.uk',
   locale: 'en_GB',
   lang: 'en-GB',
 };

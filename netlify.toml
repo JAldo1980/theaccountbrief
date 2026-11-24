@@ -20,6 +20,6 @@
 # Send the Netlify subdomain to the real domain once it's live (uncomment then).
 # [[redirects]]
 #   from = "https://theaccountbrief.netlify.app/*"
-#   to = "https://jamesalderman.uk/:splat"
+#   to = "https://theaccountbrief.uk/:splat"
 #   status = 301
 #   force = true
