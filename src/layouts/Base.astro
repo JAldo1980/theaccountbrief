@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import { SITE, AUTHOR, CATEGORIES } from '../consts';
+
+interface Props {
+  title: string; // full <title>
+  description: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, unknown>[]; // extra JSON-LD nodes
+  noindex?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
+}
+const { title, description, type = 'website', schema = [], noindex = false, publishedTime, modifiedTime } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og-default.png', Astro.site).href;
+
+const sameAs = [AUTHOR.linkedin].filter(Boolean);
+const graph = [
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    url: `${SITE.url}/`,
+    name: SITE.name,
+    description: SITE.description,
+    inLanguage: SITE.lang,
+    publisher: { '@id': `${SITE.url}/#james` },
+  },
+  {
+    '@type': 'Person',
+    '@id': `${SITE.url}/#james`,
+    name: AUTHOR.name,
+    url: `${SITE.url}/about/`,
+    jobTitle: AUTHOR.jobTitle,
+    knowsAbout: ['B2B marketing strategy', 'Key account management', 'Client service management', 'B2B SEO'],
+    ...(sameAs.length ? { sameAs } : {}),
+  },
+  ...schema,
+];
+const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="author" content={AUTHOR.name} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#14213d" />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/" aria-label={`${SITE.name}, home`}>
+          <span class="brand-mark" aria-hidden="true">AB</span>
+          <span class="brand-name">The Account <mark>Brief</mark></span>
+        </a>
+        <nav aria-label="Main">
+          <ul>
+            {CATEGORIES.map((c) => (
+              <li><a href={`/category/${c.slug}/`} aria-current={path.startsWith(`/category/${c.slug}/`) ? 'page' : undefined}>{c.name}</a></li>
+            ))}
+            <li><a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p><strong>{SITE.name}</strong> by <a href="/about/">{AUTHOR.name}</a>. {SITE.tagline}.</p>
+        <p class="footer-links">
+          <a href="/rss.xml">RSS</a>
+          {AUTHOR.linkedin && <a href={AUTHOR.linkedin} rel="me">LinkedIn</a>}
+          {AUTHOR.email && <a href={`mailto:${AUTHOR.email}`}>Email</a>}
+          <span>© {year}</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { SITE, CATEGORIES } from '../../consts';
+import { getPublishedPosts } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { slug: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props;
+const posts = (await getPublishedPosts()).filter((p) => p.data.category === cat.slug);
+const url = new URL(`/category/${cat.slug}/`, Astro.site).href;
+const schema = [
+  { '@type': 'CollectionPage', '@id': url, url, name: cat.name, description: cat.description, isPartOf: { '@id': `${SITE.url}/#website` } },
+];
+---
+<Base title={`${cat.name}: articles and guides | ${SITE.name}`} description={cat.description} schema={schema}>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Topic</p>
+      <h1>{cat.name}</h1>
+      <p class="lede">{cat.description}</p>
+    </div>
+  </section>
+  <div class="wrap">
+    {posts.length ? <PostList posts={posts} showCategory={false} /> : <p class="empty">Briefs on {cat.name.toLowerCase()} are coming soon.</p>}
+  </div>
+</Base>

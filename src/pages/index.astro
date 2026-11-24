@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { SITE, AUTHOR, CATEGORIES } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+<Base title={`${SITE.name}: B2B Strategy and Client Service Blog`} description={SITE.description}>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">By {AUTHOR.name}</p>
+      <h1>B2B strategy and client service, <mark>from the account side</mark>.</h1>
+      <p class="lede">
+        Twelve years of running B2B marketing accounts, written up: the strategy that survives contact with clients,
+        and the client service that keeps accounts growing. Practical, first-hand, no buzzwords.
+      </p>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="pillars">
+      {CATEGORIES.map((c) => (
+        <a class="pillar" href={`/category/${c.slug}/`}><strong>{c.name}</strong><span>{c.description}</span></a>
+      ))}
+    </div>
+    <h2 class="section-title">Latest briefs</h2>
+    {posts.length ? <PostList posts={posts.slice(0, 12)} /> : <p class="empty">The first brief is on its way.</p>}
+  </div>
+</Base>

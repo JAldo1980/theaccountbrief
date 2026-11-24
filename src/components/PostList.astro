@@ -1,0 +1,21 @@
+---
+import { categoryBySlug } from '../consts';
+import { formatDate, readingTime, type Post } from '../lib/posts';
+
+interface Props { posts: Post[]; headingLevel?: 'h2' | 'h3'; showCategory?: boolean }
+const { posts, headingLevel = 'h2', showCategory = true } = Astro.props;
+const H = headingLevel;
+---
+<ul class="post-list">
+  {posts.map((p) => (
+    <li>
+      <p class="eyebrow">
+        {showCategory && <><a href={`/category/${p.data.category}/`}>{categoryBySlug(p.data.category).name}</a> · </>}
+        <time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time> · {readingTime(p.body)} min read
+        {p.data.draft && ' · DRAFT'}
+      </p>
+      <H><a href={`/${p.id}/`}>{p.data.title}</a></H>
+      <p>{p.data.description}</p>
+    </li>
+  ))}
+</ul>

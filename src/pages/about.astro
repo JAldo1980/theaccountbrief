@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, AUTHOR } from '../consts';
+const url = new URL('/about/', Astro.site).href;
+const schema = [{ '@type': 'ProfilePage', '@id': url, url, mainEntity: { '@id': `${SITE.url}/#james` } }];
+---
+<Base title={`About ${AUTHOR.name} | ${SITE.name}`} description={`${AUTHOR.name} has 12+ years in B2B marketing, SEO and agency account management. About him and The Account Brief.`} schema={schema}>
+  <header class="article-head narrow">
+    <p class="eyebrow">About</p>
+    <h1>{AUTHOR.name}</h1>
+    <p class="lede">I write The Account Brief: practical notes on B2B marketing strategy and client service, from the person who runs the account.</p>
+  </header>
+  <div class="prose narrow">
+    <p>
+      I've spent more than 12 years in digital marketing, B2B growth and SEO. Today I'm a Key Account Manager for digital
+      strategy, based in {AUTHOR.location.replace(', UK', '')}. Before that I co-founded the agency Lead Kinetics, and I've
+      worked as a freelance web developer, so I've seen B2B marketing from the strategy deck, the client meeting and the build.
+    </p>
+    <h2>Why this blog</h2>
+    <p>
+      Most B2B marketing advice is written by vendors or in-house teams. Far less comes from the account side: the person
+      who has to turn a strategy into results a client will renew for. That's the gap The Account Brief fills.
+    </p>
+    <h2>What I write about</h2>
+    <ul>
+      <li><a href="/category/b2b-strategy/">B2B strategy</a>: frameworks, budgets and KPIs that hold up in practice.</li>
+      <li><a href="/category/key-account-management/">Key account management</a>: account plans, QBRs and growing accounts.</li>
+      <li><a href="/category/client-services/">Client services</a>: onboarding, reporting, retention and difficult conversations.</li>
+      <li><a href="/category/b2b-seo/">B2B SEO</a>: SEO that moves pipeline, and how to report it.</li>
+    </ul>
+    <p>Examples are drawn from real work, with clients anonymised.</p>
+    {AUTHOR.linkedin && <p>The best place to reach me is <a href={AUTHOR.linkedin} rel="me">LinkedIn</a>.</p>}
+  </div>
+</Base>
