@@ -12,8 +12,9 @@
   --measure: 68ch;
   color-scheme: light dark;
 }
+/* Dark theme: follows the device unless the reader picks one with the toggle. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --paper: #111318;
     --ink: #eef0f4;
     --text: #d9dce2;
@@ -23,6 +24,17 @@
     --accent: #8fb0ff;
   }
 }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+    --paper: #111318;
+    --ink: #eef0f4;
+    --text: #d9dce2;
+    --muted: #9aa1ad;
+    --line: #2a2e36;
+    --hi: #c9a800;
+    --accent: #8fb0ff;
+}
+:root[data-theme='light'] { color-scheme: light; }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
@@ -106,3 +118,16 @@ h3 { font-size: 1.25rem; margin: 1.8rem 0 0.5rem; }
 .footer-inner p { margin: 0; }
 .footer-links { display: flex; gap: 1.1rem; }
 .site-footer a { color: inherit; }
+
+/* Theme toggle */
+.header-tools { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.theme-toggle { display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; padding: 0; }
+.theme-toggle:hover { border-color: var(--muted); }
+.theme-toggle svg { width: 1.1rem; height: 1.1rem; }
+.theme-toggle .moon { display: none; }
+:root[data-theme='dark'] .theme-toggle .sun { display: none; }
+:root[data-theme='dark'] .theme-toggle .moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-toggle .sun { display: none; }
+  :root:not([data-theme='light']) .theme-toggle .moon { display: block; }
+}
