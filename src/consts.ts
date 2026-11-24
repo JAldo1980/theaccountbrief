@@ -12,7 +12,7 @@ export const SITE = {
 export const AUTHOR = {
   name: 'James Alderman',
   jobTitle: 'Client Services Manager',
-  location: 'Stafford, UK',
+  location: 'Birmingham, UK',
   // Add your profile URLs here; they feed the author schema (sameAs) and the footer.
   linkedin: 'https://www.linkedin.com/in/jamespalderman/',
   email: '', // optional contact address
