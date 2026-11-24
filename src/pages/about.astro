@@ -4,7 +4,7 @@ import { SITE, AUTHOR } from '../consts';
 const url = new URL('/about/', Astro.site).href;
 const schema = [{ '@type': 'ProfilePage', '@id': url, url, mainEntity: { '@id': `${SITE.url}/#james` } }];
 ---
-<Base title={`About ${AUTHOR.name} | ${SITE.name}`} description={`${AUTHOR.name} has 12+ years in B2B marketing, SEO and agency account management. About him and The Account Brief.`} schema={schema}>
+<Base title={`About ${AUTHOR.name} | ${SITE.name}`} description={`${AUTHOR.name} has 13+ years in B2B marketing, SEO and agency account management. About him and The Account Brief.`} schema={schema}>
   <header class="article-head narrow">
     <p class="eyebrow">About</p>
     <h1>{AUTHOR.name}</h1>
@@ -12,7 +12,7 @@ const schema = [{ '@type': 'ProfilePage', '@id': url, url, mainEntity: { '@id': 
   </header>
   <div class="prose narrow">
     <p>
-      I've spent more than 12 years in digital marketing, B2B growth and SEO. Today I'm a Key Account Manager for digital
+      I've spent more than 13 years in digital marketing, B2B growth and SEO. Today I'm a Key Account Manager for digital
       strategy, based in {AUTHOR.location.replace(', UK', '')}. Before that I co-founded the agency Lead Kinetics, and I've
       worked as a freelance web developer, so I've seen B2B marketing from the strategy deck, the client meeting and the build.
     </p>

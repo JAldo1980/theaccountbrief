@@ -1,7 +1,7 @@
 ---
 title: "Why I'm starting The Account Brief"
 metaTitle: "Why I'm starting The Account Brief | B2B strategy blog"
-description: "After 12+ years running B2B marketing accounts, I'm writing up what actually works in strategy and client service. Here's what to expect."
+description: "After 13+ years running B2B marketing accounts, I'm writing up what actually works in strategy and client service. Here's what to expect."
 pubDate: 2026-11-24
 category: client-services
 tags: [b2b marketing, key account management, client service]
@@ -10,7 +10,7 @@ draft: true
 
 <!-- DRAFT: James, rewrite this in your own words before publishing. Everything below is a starting point built only from facts you've given; add a real story in the second section. Set draft: false to publish. -->
 
-I've spent more than 12 years in B2B marketing, SEO and agency account management. In that time I've written strategies, run client meetings, co-founded an agency (Lead Kinetics) and built websites. The Account Brief is where I'm going to write up what I've learned.
+I've spent more than 13 years in B2B marketing, SEO and agency account management. In that time I've written strategies, run client meetings, co-founded an agency (Lead Kinetics) and built websites. The Account Brief is where I'm going to write up what I've learned.
 
 ## The gap I want to fill
 
