@@ -1,0 +1,41 @@
+---
+// Plain share links: no third-party scripts, no tracking.
+interface Props { url: string; title: string; description?: string }
+const { url, title, description = '' } = Astro.props;
+const u = encodeURIComponent(url);
+const t = encodeURIComponent(title);
+const links = [
+  { name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
+  { name: 'X', href: `https://x.com/intent/post?url=${u}&text=${t}` },
+  { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
+  { name: 'Bluesky', href: `https://bsky.app/intent/compose?text=${encodeURIComponent(`${title} ${url}`)}` },
+  { name: 'WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}` },
+  { name: 'Email', href: `mailto:?subject=${t}&body=${encodeURIComponent(`${description}\n\n${url}`)}` },
+];
+---
+<div class="share" data-url={url} data-title={title}>
+  <p class="share-label">Share this brief</p>
+  <ul>
+    <li class="share-native" hidden><button type="button" data-share-native>Share…</button></li>
+    {links.map((l) => (
+      <li><a href={l.href} target={l.name === 'Email' ? undefined : '_blank'} rel="noopener noreferrer" aria-label={`Share on ${l.name}`}>{l.name}</a></li>
+    ))}
+    <li><button type="button" data-copy-link>Copy link</button></li>
+  </ul>
+  <p class="share-status" role="status" aria-live="polite"></p>
+</div>
+<script is:inline>
+  document.querySelectorAll('.share').forEach((box) => {
+    const url = box.dataset.url, title = box.dataset.title, status = box.querySelector('.share-status');
+    const nativeBtn = box.querySelector('[data-share-native]');
+    if (navigator.share) {
+      nativeBtn.parentElement.hidden = false;
+      nativeBtn.addEventListener('click', () => navigator.share({ title, url }).catch(() => {}));
+    }
+    box.querySelector('[data-copy-link]').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(url); status.textContent = 'Link copied.'; }
+      catch (e) { status.textContent = url; }
+      setTimeout(() => { status.textContent = ''; }, 3000);
+    });
+  });
+</script>

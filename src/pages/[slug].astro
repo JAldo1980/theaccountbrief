@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 import { SITE, AUTHOR, categoryBySlug } from '../consts';
 import { getPublishedPosts, formatDate, readingTime, type Post } from '../lib/posts';
 
@@ -65,6 +66,7 @@ const schema = [
     <div class="prose narrow">
       <Content />
     </div>
+    <div class="narrow"><ShareButtons url={url} title={d.title} description={d.description} /></div>
     <aside class="author-box narrow" aria-label="About the author">
       <span class="brand-mark" aria-hidden="true">JA</span>
       <div>

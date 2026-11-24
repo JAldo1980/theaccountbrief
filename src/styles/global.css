@@ -131,3 +131,14 @@ h3 { font-size: 1.25rem; margin: 1.8rem 0 0.5rem; }
   :root:not([data-theme='light']) .theme-toggle .sun { display: none; }
   :root:not([data-theme='light']) .theme-toggle .moon { display: block; }
 }
+
+/* Share */
+.share { border-top: 1px solid var(--line); padding-block: 1.25rem 0.5rem; }
+.share-label { font: 600 0.78rem/1.2 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.75rem; }
+.share ul { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.share a, .share button {
+  display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 1rem; border: 1px solid var(--line); border-radius: 999px;
+  background: transparent; color: var(--ink); font: 500 0.9rem/1 var(--sans); text-decoration: none; cursor: pointer;
+}
+.share a:hover, .share button:hover { border-color: var(--ink); background: color-mix(in srgb, var(--hi) 22%, var(--paper)); }
+.share-status { min-height: 1.4em; margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--muted); }
