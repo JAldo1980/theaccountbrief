@@ -14,7 +14,7 @@ export const AUTHOR = {
   jobTitle: 'Key Account Manager, Digital Strategy',
   location: 'Stafford, UK',
   // Add your profile URLs here; they feed the author schema (sameAs) and the footer.
-  linkedin: '', // e.g. 'https://www.linkedin.com/in/your-handle/'
+  linkedin: 'https://www.linkedin.com/in/jamespalderman/',
   email: '', // optional contact address
 };
 
