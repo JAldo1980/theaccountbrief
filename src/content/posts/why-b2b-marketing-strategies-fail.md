@@ -23,7 +23,7 @@ The problem starts when teams turn activity into a proxy for results. You can ha
 
 When a business has a website, it usually wants it to do one of two things. Either it drives an enquiry that becomes a marketing qualified lead (MQL) or sales qualified lead (SQL), or it sells something directly, as with e-commerce. Everything else is supporting detail.
 
-That's where we need to separate strategy from tactics. Strategy is the overarching mission: getting the business from A to B. Tactics map out how you get there. Traffic and impressions can tell you whether a specific tactic is working, but they aren't necessarily an indication that your strategy is working. And if your tactics are measuring the wrong things, you can look busy while going nowhere.
+That's where we need to [separate strategy from tactics](/b2b-marketing-strategy-framework/). Strategy is the overarching mission: getting the business from A to B. Tactics map out how you get there. Traffic and impressions can tell you whether a specific tactic is working, but they aren't necessarily an indication that your strategy is working. And if your tactics are measuring the wrong things, you can look busy while going nowhere.
 
 So I always start with two questions:
 
@@ -36,7 +36,7 @@ Once you can answer those, you know what to measure, and the metrics you report 
 
 Ultimately, marketing has to show a return on investment. There has to be an output, something the business can point to and say: that came from our marketing.
 
-The best way to do this is to connect your marketing to your CRM or accounts system so you can start joining the dots. And this needs to happen early. There's no point pouring time and budget into a channel if you can't get a clear readout from it or attribute it to a commercial outcome.
+The best way to do this is to [connect your marketing to your CRM](/b2b-seo-strategy/) or accounts system so you can start joining the dots. And this needs to happen early. There's no point pouring time and budget into a channel if you can't get a clear readout from it or attribute it to a commercial outcome.
 
 I saw this first-hand with a client who told us they were getting more enquiries through their website forms. Our reports didn't show it. When we dug in, it turned out their previous agency had never set up form tracking properly. So the enquiries were real, but nobody could see where they came from or credit the work behind them.
 
@@ -70,3 +70,14 @@ In short: your strategy must be realistic within your means, and it must be meas
 - Be realistic about delivery. Match your strategy to the time, resource and talent you actually have, and make sure every part of it can be measured.
 
 Marketing that can't prove its commercial value will always be the first budget line to be cut. Marketing that can will always earn its place at the table.
+
+## FAQ
+
+**Why do B2B marketing strategies fail?**
+Usually because the wrong things are being measured, marketing is never properly connected to pipeline and revenue, and the plan doesn't match the time and resource available to deliver it.
+
+**Are traffic and impressions useful metrics?**
+Yes, as signals that a specific tactic is working. But they aren't business goals, and they often have surprisingly little correlation with pipeline or revenue.
+
+**How do you prove the ROI of B2B marketing?**
+Connect your marketing to your CRM or accounts system early, make sure every enquiry form is tracked, and give each pipeline stage (enquiry, MQL, SQL) both a cost and a value.
